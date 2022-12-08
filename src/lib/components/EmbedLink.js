@@ -2,52 +2,52 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Selection from './SelectionIcon';
 
-/*
-props:
-   id
-   disableHighlighting
-   copyMessage
-*/
-
-const EmbedLink = (props) => {
+const EmbedLink = ({ id, tooltip, position, icon, disableHighlighting, flags, children }) => {
    const [ highlighted, setHighlighted ] = useState(false);
    const [ showTooltip, setShowTooltip ] = useState(false);
    const [ showWhiteFlash, setShowWhiteFlash ] = useState(false);
 
-   if (props.id === undefined) {
+   if (id === undefined) {
       console.error('EmbedLink rendered without an id.  Please supply a stable ID so renderthis knows what to crop. EmbedLink will not render.');
-      return props.children;
+      return children;
    }
+
+   const usedTooltip = tooltip || <Tooltip left={position === 'left'} showTooltip={showTooltip}>
+      Screenshot link copied to clipboard.
+   </Tooltip>;
+
+   const usedIcon = icon || <Selection/>;
+
+   const highlight = disableHighlighting
+      ? () => {}
+      : () => setHighlighted(true);
 
    function showCopied () {
       setShowTooltip(true);
       setTimeout(() => setShowTooltip(false), 2000);
-      if (!props.disableHighlighting) {
+      if (!disableHighlighting) {
          setShowWhiteFlash(true);
          setTimeout(() => setShowWhiteFlash(false), 400);
       }
    }
 
    function copy () {
-      navigator.clipboard.writeText(`https://renderthis.app/%23${props.id}/_/${window.location.href}`).then(() => {
+      navigator.clipboard.writeText(`https://renderthis.app/%23${id}/${flags || '_'}/${window.location.href}`).then(() => {
          showCopied();
       });
    }
 
-   const highlight = props.disableHighlighting
-      ? () => {}
-      : () => setHighlighted(true);
-
    return (
       <Parent highlighted={highlighted} onPointerLeave={() => { setHighlighted(false);} }>
          <WhiteScreen shown={showWhiteFlash} />
-         <Tooltip showTooltip={showTooltip}>{props.copyMessage || 'Screenshot link copied to clipboard.'}</Tooltip>
+         {usedTooltip}
          <EmbedPopover
+            left={position === 'left'}
             onClick={() => copy()}
             onPointerEnter={highlight}>
-            <Selection/>
+            {usedIcon}
          </EmbedPopover>
-         {props.children}
+         {children}
       </Parent>
    )
 }
@@ -70,6 +70,7 @@ const Tooltip = styled.div`
    font-size: 12px;
    line-height: 14px;
    top: -15px;
+   ${props => props.left ? '' : 'right: 0px;'}
    padding-left: 2px;
    padding-right: 2px;
    background-color: black;
@@ -81,6 +82,7 @@ const EmbedPopover = styled.div`
    position: absolute;
    z-index: 9999;
    cursor: pointer;
+   ${props => props.left ? '' : 'right: 0px;'}
    @media (pointer: fine) {
       display: none;
    }
@@ -88,10 +90,11 @@ const EmbedPopover = styled.div`
 
 const Parent = styled.div`
    position: relative;
-   transition: box-shadow 0.3s ease-in-out;
+   // transition: box-shadow 0.3s ease-in-out;
 
    ${(props) => props.highlighted === true? `
-   box-shadow: rgba(0, 0, 0, 0.176) 0px 16px 48px 0px;
+   border: 5px dashed black;
+   // box-shadow: rgba(0, 0, 0, 0.176) 0px 16px 48px 0px;
    ` : ''}
 
    &:hover ${EmbedPopover} {

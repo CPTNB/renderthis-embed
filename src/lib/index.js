@@ -1,2 +1,2 @@
-import Button from './components/Button';
-export { Button };
+import EmbedLink from './components/EmbedLink';
+export { EmbedLink };
