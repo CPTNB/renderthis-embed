@@ -1,5 +1,5 @@
 # renderthis-embed
-Add embed links to your site using [renderthis](https://renderthis.app).
+Add embed links to your site using [renderthis](https://site.renderthis.app).
 
 <demo gif>
 
@@ -45,11 +45,11 @@ Navigate to [localhost:3000](http://localhost:3000).  NOTE: renderthis won't tak
 | position            | where the icon is shown                                                 | "left"\|"right" | "right"                                | NO           |
 | icon                | the icon shown when mousing over the linked content                     | a svg element   | a little camera icon guy               | NO           |
 | disableHighlighting | turns off the big dashed line and white flash around the linked content | true\|false     | false                                  | NO           |
-| flags               | [renderthis screenshot flags](https://renderthis.app/docs/flags)        | a string        | "_"                                    | NO           |
+| flags               | [renderthis screenshot flags](https://site.renderthis.app/docs/flags)        | a string        | "_"                                    | NO           |
 
 \* The id supplied to the EmbedLink component should be stable across site render so that the renderthis servers capture what the user intended.
 # Caveats
-After clicking on the screenshot icon the link copied to the user's clipboard is a *[renderthis](https://renderthis.app)* link.  Renderthis is a service that will serve up screenshots of websites on demand.  This technique has some notable limitations:
+After clicking on the screenshot icon the link copied to the user's clipboard is a *[renderthis](https://site.renderthis.app)* link.  Renderthis is a service that will serve up screenshots of websites on demand.  This technique has some notable limitations:
 
 1. Your website must be accessible by the renderthis server.  If your website is on a local dev box or inside a private network, renderthis won't be able to take a screenshot and uers' links will be dead.  You can get around this (*pending security considerations*) with a tunneling service like [ngrok](ngrok.com)
 
