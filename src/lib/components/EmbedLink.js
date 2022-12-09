@@ -90,12 +90,9 @@ const EmbedPopover = styled.div`
 
 const Parent = styled.div`
    position: relative;
-   box-sizing: border-box;
-   // transition: box-shadow 0.3s ease-in-out;
 
    ${(props) => props.highlighted === true? `
-   border: 5px dashed black;
-   // box-shadow: rgba(0, 0, 0, 0.176) 0px 16px 48px 0px;
+   outline: 5px dashed black;
    ` : ''}
 
    &:hover ${EmbedPopover} {
