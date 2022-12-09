@@ -38,7 +38,7 @@ const EmbedLink = ({ id, tooltip, position, icon, disableHighlighting, flags, ch
    }
 
    return (
-      <Parent highlighted={highlighted} onPointerLeave={() => { setHighlighted(false);} }>
+      <Parent id={id} highlighted={highlighted} onPointerLeave={() => { setHighlighted(false);} }>
          <WhiteScreen shown={showWhiteFlash} />
          {usedTooltip}
          <EmbedPopover
@@ -90,6 +90,7 @@ const EmbedPopover = styled.div`
 
 const Parent = styled.div`
    position: relative;
+   box-sizing: border-box;
    // transition: box-shadow 0.3s ease-in-out;
 
    ${(props) => props.highlighted === true? `
