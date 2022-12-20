@@ -27,7 +27,7 @@ import { EmbedLink } from 'renderthis-embed';
 ## Demo
 <demo link>
 
-This repo contains a working example you can play around with by cloning this repo and starting it:
+This repo contains a working example you can play around with by cloning and starting it:
 
 ```sh
 git clone git@github.com:CPTNB/renderthis-embed.git
@@ -35,7 +35,7 @@ cd renderthis-embed
 npm install
 npm start
 ```
-Navigate to [localhost:3000](http://localhost:3000).  NOTE: renderthis won't take screenshots of localhost -- see (caveats)[#Caveats] below.
+Navigate to [localhost:3000](http://localhost:3000).  NOTE: renderthis won't take screenshots of localhost -- see [caveats](#Caveats) below.
 
 ## API
 | **Property**        | **Controls**                                                            | **Values**      | **Default**                            | **Required** |
@@ -51,6 +51,6 @@ Navigate to [localhost:3000](http://localhost:3000).  NOTE: renderthis won't tak
 # Caveats
 After clicking on the screenshot icon the link copied to the user's clipboard is a *[renderthis](https://site.renderthis.app)* link.  Renderthis is a service that will serve up screenshots of websites on demand.  This technique has some notable limitations:
 
-1. Your website must be accessible by the renderthis server.  If your website is on a local dev box or inside a private network, renderthis won't be able to take a screenshot and uers' links will be dead.  You can get around this (*pending security considerations*) with a tunneling service like [ngrok](ngrok.com)
+1. Your website must be accessible by the renderthis server.  If your website is on a local dev box or inside a private network, renderthis won't be able to take a screenshot and uers' links will be dead.  You can get around this (*pending security considerations*) with a tunneling service like [ngrok](https://ngrok.com)
 
 2. Renderthis is only taking a flat screenshot, so your dynamic content won't be dynamic wherever your user shares the link. When users click on the image, renderthis will re-direct them to your website.
