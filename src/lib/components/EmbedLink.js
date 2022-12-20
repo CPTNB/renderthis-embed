@@ -32,7 +32,7 @@ const EmbedLink = ({ id, tooltip, position, icon, disableHighlighting, flags, ch
    }
 
    function copy () {
-      navigator.clipboard.writeText(`https://renderthis.app/%23${id}/${flags || '_'}/${window.location.href}`).then(() => {
+      navigator.clipboard.writeText(`https://renderthis.app/${flags || '_'}/%23${id}/${window.location.href}`).then(() => {
          showCopied();
       });
    }
