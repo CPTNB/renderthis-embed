@@ -1,7 +1,7 @@
 # renderthis-embed
 Add embed links to your site using [renderthis](https://site.renderthis.app).
 
-<demo gif>
+![embed demo](https://site.renderthis.app/embed-demo.gif)
 
 
 
