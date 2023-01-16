@@ -40,12 +40,12 @@ Navigate to [localhost:3000](http://localhost:3000).  NOTE: renderthis won't tak
 ## API
 | **Property**        | **Controls**                                                            | **Values**      | **Default**                            | **Required** |
 |---------------------|-------------------------------------------------------------------------|-----------------|----------------------------------------|--------------|
-| id                  | The Css ID                                                              | a valid css id\*  |                                  | YES          |
+| id                  | The CSS ID                                                              | a valid css id\*  |                                  | YES          |
 | tooltip             | what the popup value is when a user clicks the screenshot icon          | a react element | "Screenshot link copied to clipboard." | NO           |
 | position            | where the icon is shown                                                 | "left"\|"right" | "right"                                | NO           |
 | icon                | the icon shown when mousing over the linked content                     | a svg element   | a little camera icon guy               | NO           |
 | disableHighlighting | turns off the big dashed line and white flash around the linked content | true\|false     | false                                  | NO           |
-| flags               | [renderthis screenshot flags](https://site.renderthis.app/docs/flags)        | a string        | "_"                                    | NO           |
+| flags               | [renderthis screenshot flags](https://site.renderthis.app)        | a string        | "_"                                    | NO           |
 
 \* The id supplied to the EmbedLink component should be stable across site render so that the renderthis servers capture what the user intended.
 # Caveats
